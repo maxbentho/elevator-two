@@ -1,11 +1,192 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Maxime Bentho ">
+	<div class="page">
+		<img src="/maxime.jpg" alt="Maxime" class="hover-image" />
+		<main class="split">
+			<section class="panel left">
+				<h3>
+					A <span class="hover-trigger">French Amsterdam-based</span> digital product manager with 15+ years of experience.
+I enjoy working at the intersection of multiple disciplines to bring ideas to life. 
+<br> 
+<br> I bring clarity to what we build, who it serves, and why it matters.  I connect strategy, design, and tech so everything moves in the same direction. By looking at the entire journey, I create experiences that are efficient, relevant, and remarkable.
+<br><br>Feel free to check my <a href="https://www.figma.com/deck/e0dwTM7DLbpNC42dSOfnwC/portfolio--maxbentho?node-id=687-127&viewport=-9567%2C30%2C0.44&t=dnsWgodwHuVlsWRi-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer">portfolio</a>.
+				</h3>
+			</section>
+
+			<section class="panel right">
+				<h3>
+					↳ Past projects : Audley Travel, Chanel, Etudes Studio, Hashgraph, Koché, Louis Vuitton, Rolex, Thom Browne, Tudor, Uber, Wajer
+				</h3>
+				
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="footer-column">
+				<h3>
+					<a href="mailto:m.bentho@gmail.com" target="_blank" rel="noopener noreferrer">EMAIL</a> | <a href="https://www.linkedin.com/in/maxbentho/" target="_blank" rel="noopener noreferrer">LINKEDIN</a> | <a href="https://www.instagram.com/maxbentho?igsh=MXF0aGxhMmp1enhrNg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+				</h3>
+			</div>
+			<div class="footer-column footer-column-right">
+				<h3>I am now open to new project, reach out to <a href="mailto:m.bentho@gmail.com">m.bentho@gmail.com</a></h3>
+			</div>
+		</footer>
+	</div>
 </Layout>
+
+<style>
+	:root {
+		--offset: 2vw;
+		--panel-width: min(60rem, calc(100% - 2 * var(--offset)));
+	}
+
+	.page {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.split {
+		flex: 1;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-content: start;
+		padding-bottom: var(--offset);
+	}
+
+	.panel {
+		margin-top: var(--offset);
+		margin-left: var(--offset);
+		font-size: clamp(0.85rem, 1.4vw, 1rem);
+		max-width: 55rem;
+		width: var(--panel-width);
+	}
+
+	.panel.right {
+		margin-right: var(--offset);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: inherit;
+		font-weight: inherit;
+		text-transform: inherit;
+	}
+
+	.panel h3 {
+		margin: 0;
+		font-weight: inherit;
+		font-size: inherit;
+	}
+
+	.hover-trigger {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.hover-image {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-width: 20vw;
+		max-height: 20vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+		z-index: 1000;
+		display: block;
+	}
+
+	.page:has(.hover-trigger:hover) .hover-image {
+		opacity: 0.85;
+	}
+
+	.panel.right h3 + h3 {
+		margin-top: 1.25rem;
+	}
+
+	.panel a {
+		color: inherit;
+		text-decoration: underline;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	.panel a:hover {
+		opacity: 0.7;
+	}
+
+	.footer {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: start;
+		padding: var(--offset);
+		padding-top: 0;
+	}
+
+	.footer-column {
+		width: var(--panel-width);
+		max-width: 55rem;
+		margin-left: var(--offset);
+	}
+
+	.footer-column-right {
+		margin-right: var(--offset);
+		text-align: left;
+	}
+
+	.footer a {
+		color: inherit;
+		text-decoration: underline;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	.footer a:hover {
+		opacity: 0.7;
+	}
+
+	@media (max-width: 768px) {
+		.split {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.panel {
+			margin-left: var(--offset);
+			margin-right: var(--offset);
+			font-size: clamp(1rem, 2vw, 1.2rem);
+		}
+
+		.panel.right {
+			margin-right: var(--offset);
+			margin-top: 2rem;
+		}
+
+		.footer {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.footer-column {
+			width: 100%;
+			margin-left: var(--offset);
+			margin-right: var(--offset);
+		}
+
+		.footer-column-right {
+			text-align: left;
+			margin-left: var(--offset);
+			margin-right: var(--offset);
+			order: -1;
+		}
+	}
+</style>
