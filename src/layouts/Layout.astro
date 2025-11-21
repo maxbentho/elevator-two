@@ -1,4 +1,6 @@
 ---
+import { inject } from '@vercel/analytics';
+
 const {
 	title = 'Maxime Bentho',
 	description = 'A French Amsterdam-based digital product manager with 15+ years of experience. I bring clarity to what we build, who it serves, and why it matters.',
@@ -12,6 +14,9 @@ const baseUrl = Astro.site?.origin || (typeof Astro.url === 'object' ? Astro.url
 const currentUrl = url || Astro.url.href;
 const fullUrl = currentUrl.startsWith('http') ? currentUrl : new URL(currentUrl, baseUrl).href;
 const fullImageUrl = image.startsWith('http') ? image : new URL(image, baseUrl).href;
+
+// Inject Vercel Analytics
+inject();
 ---
 
 <!doctype html>
